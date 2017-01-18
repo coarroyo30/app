@@ -1,0 +1,89 @@
+
+// Variablen
+
+$tablet-size: 768px;
+$desktop-size: 1024px;
+$desktop-size-large: 1060px;
+
+$font-family: 'Open Sans', 'helvetica', sans-serif;
+
+$text-shadow-hack: 1px 1px 1px rgba(0,0,0,0.004);
+
+// Images
+
+$icon_bell: url('../images/icons/icon-bell.svg');
+$icon_dashboard: url('../images/icons/icon-dashboard.svg');
+$icon_members: url('../images/icons/icon-members.svg');
+$icon_settings: url('../images/icons/icon-settings.svg');
+$icon_visits: url('../images/icons/icon-visits.svg');
+
+$icon_facebook: url('../images/icons/icon-facebook.svg');
+$icon_twitter: url('../images/icons/icon-twitter.svg');
+$icon_google-plus: url('../images/icons/icon-google-plus.svg');
+
+// Background Colors
+
+// Topbar Background Colors
+
+$topbar_background-color: #7479BD;
+$topbar-icon_background-color: #ffffff;
+$topbar-icon_highlight-color: #88DA85;
+$topbar-border_background-color: #5E64BC;
+
+// Sidebar Background Colors
+
+$sidebar_background-color: #4D4D71;
+$sidebar-icon_background-color: #A6A6B8;
+$sidebar-icon_background-color--hover: #ffffff;
+$sidebar_highlight-color: #88DA84;
+
+// Main Background Colors
+
+$main_background-color: #FBFBFB;
+$dashboard_background-color: #ffffff;
+
+// Dashboard Background Colors
+
+$dashboard_highlight-color: #83C891;
+$dashboard-bar_background-color: #7379BD;
+$dashboard-icon_background-color: #747ABC;
+$dashboard-button_background-color: #B2B2B2;
+$dashboard-button-highlight_background-color: #7379BD;
+$dasboard-main_border-color: #DBDBDB;
+$dashboard-icon_border-color: #D1D1CD;
+$dashboard-input_background-color: #FBFBFB;
+
+// Chart Background Colors
+
+$chart_border-color: #E9E9E9;
+
+$linechart_background-color: #E2E3F5;
+$linechart-line_background-color: #A9ADE3;
+$linechart-circle_background-color: #7379BD;
+
+$barchart_background-color: #7076B8;
+
+$piechart-main_background-color: #7379BD;
+$piechart-second_background-color: #83C891;
+$piechart-third_background-color: #6BA0AC;
+
+$non-background_color: transparent;
+
+// Text Colors
+
+// Topbar Text Colors
+
+$topbar_text-color: #ffffff;
+
+// Dashboard Text Colors
+
+$dashboard-main_text-color: #676666;
+$dashboard-second_text-color: #8F8F8F;
+$dashboard-third_text-color: #ffffff;
+$dashboard-forth_text-color: #666666;
+$dashboard-highlight_text-color: #7479BD;
+$dashboard-input_text-color: #DBDBDB;
+
+// Chart Text Colors
+
+$chart_text-color: #A9A9A9;

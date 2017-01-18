@@ -1,0 +1,25 @@
+
+// Placeholder
+
+%full_width_placeholder {
+  width: 100%;
+}
+%full_height_placeholder {
+  height: 100%;
+}
+%full_max_width_placeholder {
+  max-width: 100%;
+}
+%full_max_height_placeholder {
+  max-height: 100%;
+}
+%center_in_container_placeholder {
+  margin: 0 auto;
+}
+
+%image_placeholder {
+  @extend %full_width_placeholder;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}

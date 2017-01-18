@@ -1,0 +1,82 @@
+
+/****************************************************************
+
+Sidebar Rules
+
+****************************************************************/
+
+.sidebar {
+  width: 60px;
+  height: calc(100% - 70px);
+  @extend %full_height_placeholder;
+  position: absolute; z-index: 500;
+  transform: translateY(-100%);
+  transition: transform 300ms ease-in-out;
+  transition-delay: 400ms;
+  background: $sidebar_background-color;
+
+  &.is-open {
+    transform: translateY(0);
+  }
+
+  @include tablet {
+    width: 90px;
+    transform: translateY(0);
+  }
+
+  .container {
+    @extend %full_width_placeholder;
+    padding: 10px 0 0 0;
+
+    @include tablet {
+      padding: 20px 0 0 0;
+    }
+  }
+
+  .sidebar-icon_container {
+    @extend %full_width_placeholder;
+    height: 60px;
+    @include flexbox(flex, center, center, column);
+
+    &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+      margin: 10px 0 0 0;
+    }
+    &.active {
+      border-left: 4px solid $sidebar_highlight-color;
+    }
+    &:hover {
+      border-left: 4px solid $sidebar_highlight-color;
+    }
+    &:hover span {
+      margin: 0 0 0 -8px;
+      opacity: 1;
+    }
+    & span {
+      display: block;
+      width: 20px; height: 20px; margin: 0 0 0 -4px;
+      opacity: 0.4;
+      background-size: 20px 20px;
+
+      &.active {
+        margin: 0 0 0 -4px;
+        opacity: 1;
+      }
+      @include tablet {
+        width: 20px; height: 20px;
+        background-size: 20px 20px;
+      }
+    }
+    & span.icon-1 {
+      background: $icon_dashboard no-repeat center center;
+    }
+    & span.icon-2 {
+      background: $icon_members no-repeat center center;
+    }
+    & span.icon-3 {
+      background: $icon_visits no-repeat center center;
+    }
+    & span.icon-4 {
+      background: $icon_settings no-repeat center center;
+    }
+  }
+}

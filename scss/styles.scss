@@ -1,0 +1,29 @@
+
+// Import Google Font
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+// Import abstracts files from abstracts folder
+
+@import 'abstracts/vars';
+@import 'abstracts/placeholders';
+@import 'abstracts/mixins';
+
+// Import base file from base folder
+
+@import 'base/base';
+@import 'base/typografie';
+@import 'base/global';
+
+// Import layout files from layout folder
+
+@import 'layout/topbar';
+@import 'layout/sidebar';
+@import 'layout/dashboard'; 
+
+
+/* Micro Clearfix */
+
+.clearfix {
+  @include clearfix;
+}

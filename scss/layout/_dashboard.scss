@@ -1,0 +1,842 @@
+
+/****************************************************************
+
+Dashboard Rules
+
+****************************************************************/
+
+.dashboard {
+  @extend %full_width_placeholder;
+  @extend %full_max_width_placeholder;
+
+  @include tablet {
+    padding: 0 0 0 90px;
+  }
+
+  /****************************************************************
+
+  Dashboard Topbar Rules
+
+  ****************************************************************/
+
+  .dashboard-topbar {
+    @extend %full_width_placeholder;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $dasboard-main_border-color;
+  }
+
+  .dashboard-topbar-leftside, .dashboard-topbar-rightside {
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+
+  .dashboard-topbar-leftside {
+    @extend %full_width_placeholder;
+    @extend %full_height_placeholder;
+    justify-content: flex-start;
+
+    .dashboard-topbar-title {
+      height: 101%;
+      margin-top: 1px;
+      padding: 0 20px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $dashboard_background-color;
+      border-right: 1px solid $dasboard-main_border-color;
+    }
+    .dashboard-topbar-title h2 {
+      color: $dashboard-main_text-color;
+      font: {
+        size: 0.938rem;
+        weight: 700;
+      }
+    }
+  }
+  .dashboard-topbar-rightside {
+    justify-content: flex-end;
+    position: relative;
+
+    & label{
+      background: green;
+      & img {
+        width: 15px; height: 15px;
+        position: absolute; top: 10px; right: 30px;
+      }
+    }
+
+    input[type="text"] {
+      @include appearance;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 20px 0 0; padding: 10px;
+      background: $dashboard_background-color;
+      border: 1px solid $dasboard-main_border-color;
+      border-radius: 6px;
+    }
+  }
+
+  /****************************************************************
+
+  Dashboard Alertbar Rules
+
+  ****************************************************************/
+
+  .dashboard-alertbar {
+    padding: 30px 20px 0px 20px;
+    background: $dashboard_background-color;
+    
+
+    &.open {
+      display: block;
+    }
+
+    .dashboard-alertbar-inner {
+      @extend %full_width_placeholder;
+      @include flexbox(flex, flex-start, center, column);
+      min-height: 40px;
+      padding: 20px 20px 20px 20px;
+      border-radius: 3px;
+      position: relative;
+      opacity: 1;
+      transition: opacity 300ms ease-in-out;
+      background: $dashboard-bar_background-color;
+
+      &.close {
+        opacity: 0;
+        display: none;
+      }
+
+      @include tablet {
+        @include flexbox(flex, center, flex-start, row);
+      }
+
+      & h3 {
+        font-size: 0.875rem;
+        color: $dashboard-third_text-color;
+      }
+      & p {
+        margin: 5px 0 0 0;
+        font-size: 0.813rem;
+        color: $dashboard-third_text-color;
+
+        @include tablet {
+          width: 100%;
+          margin: 0 0 0 10px;
+        }
+      }
+
+      & span {
+        width: 10px; height: 10px;
+        padding: 0 0 0 10px;
+        display: block; cursor: pointer;
+        position: absolute; top: 22px; right: 20px;
+        background: url('../images/delete.svg') no-repeat center center;
+        background-size: 10px 10px;
+
+        @include tablet {
+          position: static;
+        }
+      }
+    }
+  }
+
+  /****************************************************************
+
+  Dashboard Traffic Rules
+
+  ****************************************************************/
+
+  .dashboard-traffic {
+    padding: 30px 20px 30px 20px;
+    background: $dashboard_background-color;
+    border-bottom: 1px solid $dasboard-main_border-color;
+
+    .dashboard-traffic-navbar {
+      @extend %full_width_placeholder;
+      @include flexbox(flex, center, flex-start, column);
+
+      @include tablet {
+        flex-direction: row;
+      }
+
+      .dashboard-traffic-navbar-leftside, .dashboard-traffic-navbar-rightside {
+        display: flex;
+        align-items: center;
+      }
+
+      .dashboard-traffic-navbar-leftside {
+        @extend %full_width_placeholder;
+        @extend %full_height_placeholder;
+        margin: 0 0 20px;
+        justify-content: flex-start;
+
+        & h3 {
+          font-size: 1rem;
+          font-weight: normal;
+          text-transform: uppercase;
+          color: $dashboard-main_text-color;
+        }
+      }
+
+      @include tablet {
+        .dashboard-traffic-navbar-leftside {
+          width: 50%;
+          margin: 0;
+          padding: 6px 0px 8px;
+          justify-content: flex-start;
+        }
+      }
+
+      .dashboard-traffic-navbar-rightside {
+        @extend %full_width_placeholder;
+        @extend %full_height_placeholder;
+        justify-content: center;
+
+        & ul {
+
+          display: flex;
+          align-items: center;
+        }
+
+        & li {
+          padding: 6px 12px 8px;
+        }
+        & li.active {
+          padding: 6px 12px 8px;
+          border-radius: 3px;
+          background: $dashboard_highlight-color;
+        }
+
+        & a {
+          font-weight: bold;
+          font-size: 0.688rem;
+          color: $dashboard-main_text-color;
+        }
+        & a.active {
+          color: $dashboard-third_text-color;
+        }
+      }
+
+      @include tablet {
+        .dashboard-traffic-navbar-rightside {
+          width: 50%;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    /****************************************************************
+
+    Dashboard Traffic Line Chart Rules
+
+    ****************************************************************/
+
+    .dashboard-traffic-linechart {
+      padding: 30px 0 0 0;
+
+      canvas {
+        width: 100% !important;
+        height: 270px;
+      }
+    }
+  }
+
+  /****************************************************************
+
+  Dashboard Information Rules
+
+  ****************************************************************/
+
+  .dashboard-information {
+    display: flex;
+    flex-direction: column;
+    background: $dashboard_background-color;
+    border-bottom: 1px solid $dasboard-main_border-color;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    .dashboard-info-leftside, .dashboard-info-rightside {
+      width: 100%;
+
+      @include tablet {
+        width: 50%;
+      }
+    }
+
+    .dashboard-info-title h2 {
+      font-size: 0.938rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      color: $dashboard-main_text-color;
+    }
+
+    .dashboard-info-leftside {
+      padding: 30px 20px 30px 20px;
+      border-bottom: 1px solid $dasboard-main_border-color;
+
+      @include tablet {
+        border-right: 1px solid $dasboard-main_border-color;
+        border-bottom: none;
+      }
+
+      /****************************************************************
+
+      Dashboard Traffic Bar Chart Rules
+
+      ****************************************************************/
+
+      .dashboard-info-barchart {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        padding: 25px 0 0 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .dashboard-info-rightside {
+      padding: 30px 20px 30px 20px;
+
+      /****************************************************************
+
+      Dashboard Traffic Doughnut Chart Rules
+
+      ****************************************************************/
+
+      .dashboard-info-doughnutchart {
+        padding: 25px 0px 0 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+
+        @include desktop-large {
+          flex-direction: row;
+        }
+
+        .dashboard-info-labels {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: row;
+
+          @include desktop-large {
+            flex-direction: column;
+          }
+
+          .dashboard-info-labels-phone,
+          .dashboard-info-labels-tablets,
+          .dashboard-info-labels-desktop {
+            display: flex;
+            margin: 0px 20px 0 0;
+
+            @include desktop-large {
+              margin: 20px 0px 0 0;
+            }
+          }
+          .dashboard-info-labels-phone {
+            margin: 0px 20px 0 0;
+
+            @include desktop-large {
+              margin: 0;
+            }
+          }
+          .dashboard-info-labels-phone span,
+          .dashboard-info-labels-tablets span,
+          .dashboard-info-labels-desktop span {
+            width: 20px; height: 20px;
+            margin: 0 10px 0 0;
+            border-radius: 3px;
+          }
+          .dashboard-info-labels-phone span {
+            background: #74b1bf;
+          }
+          .dashboard-info-labels-tablets span {
+            background: #81c98f;
+          }
+          .dashboard-info-labels-desktop span {
+            background: #7377bf;
+          }
+          .dashboard-info-labels-phone p,
+          .dashboard-info-labels-tablets p,
+          .dashboard-info-labels-desktop p {
+            font-size: 0.813rem;
+            color: $dashboard-main_text-color;
+          }
+        }
+        canvas {
+          width: 100%;
+          height: 100%;
+          max-width: 80%;
+          margin: 0 0 20px 0;
+        }
+      }
+    }
+  }
+
+  /****************************************************************
+
+  Dashboard Members Rules
+
+  ****************************************************************/
+
+  .dashboard-social {
+    padding: 30px 20px 30px 20px;
+    background: $dashboard_background-color;
+    border-bottom: 1px solid $dasboard-main_border-color;
+
+    .dashboard-social-title h2 {
+      font-size: 0.938rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      color: $dashboard-main_text-color;
+    }
+
+    .dashboard-social-boxes {
+      @extend %full_width_placeholder;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+      justify-content: center;
+
+      @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .dashboard-social-box-one,
+      .dashboard-social-box-two,
+      .dashboard-social-box-three {
+        width: 70%;
+        max-width: 328px;
+        height: 118px;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        border: 1px solid $dasboard-main_border-color;
+        background: $main_background-color;
+
+        @include tablet {
+          width: auto;
+        }
+      }
+      .dashboard-social-box-one,
+      .dashboard-social-box-two {
+        margin-right: 0px;
+        margin-bottom: 20px;
+
+        @include tablet {
+          margin-right: 20px;
+          margin-bottom: 0px;
+        }
+      }
+      .dashboard-social-icon {
+        @include flexbox(flex, center, center);
+        width: 70px; height: 70px;
+        border-radius: 100%;
+        margin-right: 10px; margin-left: 10px;
+        background: $dashboard-button-highlight_background-color;
+      }
+      .dashboard-social-box-one span,
+      .dashboard-social-box-two span,
+      .dashboard-social-box-three span {
+        display: inline-block;
+        width: 60px; height: 60px;
+      }
+      .dashboard-social-box-one span {
+        margin-top: 5px;
+        background: $icon_twitter no-repeat center center;
+        background-size: 35px 35px;
+      }
+      .dashboard-social-box-two span {
+        margin-bottom: 5px;
+        background: $icon_facebook no-repeat center center;
+        background-size: 35px 35px;
+      }
+      .dashboard-social-box-three span {
+        background: $icon_google-plus no-repeat center center;
+        background-size: 30px 30px;
+      }
+
+      .dashboard-social-box-content h3 {
+        font-size: 0.813rem;
+        color: $dashboard-highlight_text-color;
+      }
+      .dashboard-social-box-content p {
+        font-size: 1.225rem;
+        font-weight: 300;
+        color: $dashboard-main_text-color;
+      }
+    }
+  }
+
+  /****************************************************************
+
+  Dashboard Members Rules
+
+  ****************************************************************/
+
+  .dashboard-members {
+    display: flex;
+    flex-direction: column;
+    background: $dashboard_background-color;
+    border-bottom: 1px solid $dasboard-main_border-color;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    .dashboard-members-leftside, .dashboard-members-rightside {
+      width: 100%;
+
+      @include tablet {
+        width: 50%;
+      }
+    }
+
+    .dashboard-members-title h2 {
+      font-size: 0.938rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      color: $dashboard-main_text-color;
+    }
+
+    .dashboard-members-leftside {
+      padding: 30px 20px 10px 20px;
+      border-bottom: 1px solid $dasboard-main_border-color;
+
+      @include tablet {
+        border-right: 1px solid $dasboard-main_border-color;
+        border-bottom: none;
+      }
+
+      .dashboard-new_members-container {
+        @extend %full_width_placeholder;
+
+        .dashboard-new_members-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 80px;
+          border-bottom: 1px solid $dasboard-main_border-color;
+
+          &:last-of-type {
+            border-bottom: none;
+          }
+        }
+
+        .dashboard-new_members-face {
+          width: 40px; height: 40px;
+          display: flex;
+          border-radius: 100%;
+
+          & img {
+            margin-right: 10px;
+            border-radius: 100%;
+          }
+
+          .dashboard-new_members-info {
+            & h3 {
+              font-size: 0.875rem;
+              font-weight: normal;
+              color: $dashboard-main_text-color;
+            }
+            & p {
+              font-size: 0.813rem;
+              font-weight: normal;
+              color: $dashboard-highlight_text-color;
+            }
+          }
+        }
+
+        .dashboard-new_members-date {
+          display: none;
+          & p {
+            font-size: 0.813rem;
+            font-weight: normal;
+            color: $dashboard-main_text-color;
+          }
+          @media screen and (min-width: 425px) {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .dashboard-members-rightside {
+      padding: 30px 20px 10px 20px;
+    }
+
+    .dashboard-recent_activity-container {
+      @extend %full_width_placeholder;
+
+      .dashboard-recent_activity-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        border-bottom: 1px solid $dasboard-main_border-color;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+      }
+
+      .dashboard-recent_activity-face {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-radius: 100%;
+
+        & img {
+          width: 40px; height: 40px;
+          margin-right: 10px;
+          border-radius: 100%;
+        }
+
+        .dashboard-recent_activity-info {
+
+          & h3 {
+            font-size: 0.8rem;
+            font-weight: normal;
+            color: $dashboard-main_text-color;
+          }
+          & p {
+            font-size: 0.675rem;
+            font-weight: normal;
+            color: $dashboard-main_text-color;
+          }
+        }
+      }
+
+      .dashboard-recent_activity-icon {
+        width: 20px; height: 20px;
+        margin-left: 20px;
+
+        @media screen and (min-width: 425px) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  /****************************************************************
+
+  Dashboard Settings Rules
+
+  ****************************************************************/
+.error {
+  color: red;
+}
+
+  .dashboard-settings {
+    display: flex;
+    flex-direction: column;
+    background: $dashboard_background-color;
+    padding-bottom: 40px;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    .dashboard-settings-leftside, .dashboard-settings-rightside {
+      width: 100%;
+
+      @include tablet {
+        width: 50%;
+      }
+    }
+
+    .dashboard-settings-title h2 {
+      font-size: 0.938rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      color: $dashboard-main_text-color;
+    }
+
+    .dashboard-settings-leftside {
+      padding: 30px 20px 30px 20px;
+      border-bottom: 1px solid $dasboard-main_border-color;
+
+      @include tablet {
+        border-right: 1px solid $dasboard-main_border-color;
+        border-bottom: none;
+      }
+
+      .dashboard-settings-container {
+        @extend %full_width_placeholder;
+        display: flex;
+        flex-direction: column;
+
+        input[type="text"] {
+          @include appearance;
+          width: 100%;
+          height: 50px;
+          font-size: 0.813rem;
+          margin: 20px 0 20px 0; padding: 10px;
+          color: $dashboard-main_text-color;
+          background: $dashboard_background-color;
+          border: 1px solid $dasboard-main_border-color;
+          border-radius: 6px;
+        }
+        textarea {
+          @include appearance;
+          width: 100%;
+          height: 126px;
+          font-size: 0.813rem;
+          margin: 0 0 20px 0; padding: 10px;
+          color: $dashboard-main_text-color;
+          background: $dashboard_background-color;
+          border: 1px solid $dasboard-main_border-color;
+          border-radius: 6px;
+        }
+        input[type="submit"] {
+          height: 50px;
+          border-radius: 6px;
+          cursor: pointer;
+          background: $dashboard-button-highlight_background-color;
+        }
+        input[value] {
+          font-size: 1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: $dashboard-third_text-color;
+        }
+      }
+    }
+
+    .dashboard-settings-rightside {
+      padding: 30px 20px 30px 20px;
+    }
+
+    .dashboard-settings-right-container {
+      @extend %full_width_placeholder;
+
+      .dashboard-settings-right-row {
+        height: 35px;
+        margin: 20px 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:nth-child(2) {
+          margin: 20px 0 40px;
+        }
+
+        .dashboard-settings-right-text p {
+          font-size: 0.813rem;
+          color: $dashboard-main_text-color;
+        }
+
+        .dashboard-settings-right-icon {
+          width: 86px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 10px 0 10px;
+          border-radius: 20px;
+          position: relative;
+          font-weight: bold;
+          font-size: 0.775rem;
+          color: #ffffff;
+          border: 1px solid $dasboard-main_border-color;
+          background: $dashboard-button-highlight_background-color;
+
+          .dashboard-settings-right-icon-button {
+            width: 32px;
+            height: 30px;
+            border-radius: 100%;
+            position: absolute; right: 3px; top: 4px;
+            border: 1px solid $dasboard-main_border-color;
+            background: #ffffff;
+            transition: all 3s ease-in-out;
+
+            &.first.set1 {
+              animation: move 300ms 1 forwards;
+            }
+            &.last.set2 {
+              animation: move 300ms 1 forwards;
+            }
+          }
+          @keyframes move {
+            from {
+              right: 3px;
+            }
+            to {
+              left: 3px;
+            }
+          }
+        }
+      }
+
+      .dashboard-settings-right-select {
+        @extend %full_width_placeholder;
+        position: relative;
+
+        & label{
+
+          & img {
+            width: 15px; height: 15px;
+            position: absolute; top: 23px; right: 10px;
+          }
+        }
+
+        select {
+          @include appearance;
+          width: 100%;
+          height: 50px;
+          font-size: 0.813rem;
+          margin: 5px 0 20px 0; padding: 10px;
+          color: $dashboard-main_text-color;
+          background: $dashboard_background-color;
+          border: 1px solid $dasboard-main_border-color;
+          border-radius: 6px;
+        }
+      }
+      .dashboard-settings-right-buttons {
+        @extend %full_width_placeholder;
+        display: flex;
+
+        input[type="submit"] {
+          width: 50%;
+          height: 50px;
+          margin-right: 20px;
+          border-radius: 6px;
+          cursor: pointer;
+          background: $dashboard-button-highlight_background-color;
+
+          &:nth-child(2) {
+            margin: 0;
+            background: $dashboard-button_background-color;
+          }
+        }
+        input[value] {
+          font-size: 1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: $dashboard-third_text-color;
+        }
+      }
+    }
+  }
+
+}

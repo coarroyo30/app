@@ -1,0 +1,24 @@
+
+// Global Rules
+
+// Page Wrapper
+
+.wrapper {
+  @extend %full_width_placeholder;
+  @extend %page_max_width_placeholder !optional;
+  @extend %page_min_height_placeholder !optional;
+  & {
+    @extend %center_in_container_placeholder;
+  }
+}
+
+// Page Container
+
+.container {
+  width: 90%;
+  @extend %full_max_width_placeholder;
+  @extend %full_height_placeholder;
+  & {
+    @extend %center_in_container_placeholder;
+  }
+}
